@@ -5,6 +5,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+//TODO proper error decoding, logging should be configured
 @FeignClient(name = "counter-service-client", url = "${feign.url}")
 public interface CounterServiceApi {
 

@@ -23,6 +23,7 @@ public class CounterRecordDtoValidator {
             errors.add(blankFieldError("counterId"));
         }
 
+        //TODO is is not clear if it is should be integer, greater than zero
         if (isBlank(recordDto.getAmount())) {
             errors.add(blankFieldError("amount"));
         }

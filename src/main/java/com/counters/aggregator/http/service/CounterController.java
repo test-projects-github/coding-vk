@@ -27,11 +27,13 @@ public class CounterController {
     @Autowired
     private DurationParameterParser durationParameterParser;
 
+    //TODO configure rejection policy, queue size, number of threads
     private ExecutorService executor = Executors.newFixedThreadPool(5);
 
     @PostMapping("/counter_callback")
     @ResponseStatus(ACCEPTED)
     public void saveCounterRecord(@RequestBody CounterRecordDto recordDto) {
+        //TODO maybe it is better to create separate wrapper class with executor service functionality
         executor.submit(() -> counterRecordService.saveRecord(recordDto));
     }
 
@@ -46,7 +48,7 @@ public class CounterController {
     }
 
     @PreDestroy
-    public void destroy() throws InterruptedException {
+    public void destroy() {
         try {
             executor.awaitTermination(1, SECONDS);
         } catch (InterruptedException e) {

@@ -27,6 +27,7 @@ public interface CounterRecordRepository extends CrudRepository<CounterRecord, I
             "                        ), 0) " +
             "        ) ",
             nativeQuery = true)
+    //TODO I am not sure this is safe solution. I have concerns regarding finding last value
     void insertNewRecord(@Param("village") String village,
                          @Param("amount") Integer amount,
                          @Param("created") Instant created);

@@ -103,7 +103,7 @@ public class CounterControllerTest {
     }
 
     private void insertReportRecords() {
-        recordRepository.deleteAll();
+        recordRepository.deleteAll(); //TODO this require proper fix. Because controller contains thread pool their transaction rollback is not done. So, previous test left one record already in database
         recordRepository.insertNewRecord(villageName1, 80, now());
         recordRepository.insertNewRecord(villageName1, 100, now());
         recordRepository.insertNewRecord(villageName1, 250, now());
